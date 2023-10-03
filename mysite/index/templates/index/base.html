@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link type="text/css" href="{% static 'index/css/style.css'%}" rel="stylesheet" />
+</head>
+<body>
+    {% block mainmenu %}
+        <header class="header">
+            <div class="container">
+                <div class="header__container">
+                    <a href="{% url 'home' %}" class="header__logo"><img src="{% static 'index/images/logo.png' %}"></a>
+                    <ul class="header__menu menu">
+                        {% for item in menu %}
+                        <li class="menu__item"><a href="{% url item.url_name %}">{{ item.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </header>
+    {% endblock %}
+    {% block main %}
+    <main class="main">
+       {% block sidebar %}
+                <ul class="sidebar">
+                    {% if cat_selected == 0 %}
+                        <li class="selected">All categories</li>
+                    {% else %}
+                        <li><a href="{% url 'home' %}">All categories</a></li>
+                    {% endif %}
+                    {% for cat in cats %}
+                        {% if cat_selected == cat.pk %}
+                            <li class="selected">{{cat.name}}</li>
+                        {% else %}
+                            <li><a href="{{cat.get_absolute_url}}">{{cat.name}}</a></li>
+                        {% endif %}
+                    {% endfor %}
+<!--                    <li><a>Cyberpank</a></li>-->
+<!--                    <li><a>Shooting</a></li>-->
+<!--                    <li><a>Fantasy</a></li>-->
+                </ul>
+        {% endblock %}
+        {% block content %}
+        {% endblock %}
+    </main>
+    {% endblock %}
+</body>
+</html>
