@@ -26,8 +26,9 @@ def show_menu():
     menu = [
         {'title': 'Главная', 'url_name': 'home'},
         {'title': 'О компании', 'url_name': 'about'},
+        {'title': 'Добавление поста', 'url_name': 'addpost'},
         {'title': 'Контакты', 'url_name': 'contact'},
-        {'title': 'Login', 'url_name': 'login'},
+        {'title': 'Login', 'url_name': 'login'}
     ]
     return {'menu':menu}
 
@@ -39,6 +40,7 @@ def show_footer():
         {'title': 'О компании', 'url_name': 'about'},
         {'title': 'Контакты', 'url_name': 'contact'},
         {'title': 'Login', 'url_name': 'login'},
+        {'title': 'Добавление поста', 'url_name' : 'addpost'}
     ]
     about = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id quam ut metus bibendum suscipit. Aliquam erat volutpat. Fusce eleifend justo id lacus scelerisque, ac bibendum justo consequat. Nunc euismod arcu in dolor consectetur, ac rhoncus augue malesuada. Nulla facilisi. Maecenas in ligula sit amet arcu consectetur aliquet. Quisque sit amet magna vel libero ultrices tincidunt.'
     return {'menu': menu, 'about' : about}

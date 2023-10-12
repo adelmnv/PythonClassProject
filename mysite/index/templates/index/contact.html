@@ -1,0 +1,40 @@
+{%extends 'index/base.html' %}
+{% block content %}
+    <div class="content">
+        <div class="contact__wrap">
+            <div class="contact__form">
+                <h2>{{title}}</h2>
+                <form action="{% url 'contact' %}" method="post">
+                    {% csrf_token %}
+                    {%for field in form%}
+                        <div>
+                            {{field}}
+                            <div class="form__error">{{field.errors}}</div>
+                        </div>
+                    {% endfor %}
+                    <button type="submit">Разместить</button>
+                </form>
+            </div>
+            <div class="contact__info">
+                <div class="contact__block">
+                    <h3>АДРЕС</h3>
+                    {%for line in address %}
+                        <p>{{line}}</p>
+                    {%endfor%}
+                </div>
+                <div class="contact__block">
+                    <h3>ПОЗВОНИТЕ НАМ</h3>
+                    {%for line in phone_nums %}
+                        <p>{{line}}</p>
+                    {%endfor%}
+                </div>
+                <div class="contact__block">
+                    <h3>ЧАСЫ РАБОТЫ</h3>
+                    {%for line in opening_hours %}
+                        <p>{{line}}</p>
+                    {%endfor%}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
