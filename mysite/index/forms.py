@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
 from .models import *
@@ -37,3 +39,12 @@ class ContactForm(forms.Form):
     name = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'placeholder':'Введите ваше имя','class': 'contact__form__input' }))
     email = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'placeholder':'Введите ваш email','class': 'contact__form__input'}))
     message = forms.CharField( widget=forms.Textarea(attrs={'placeholder':'Введите ваше сообщение', 'class': 'contact__form__input', 'cols': 60,'rows':10}))
+
+class RegisterUserForm(UserCreationForm):
+    username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'class': 'form__input'}))
+    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'form__input'}))
+    password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form__input'}))
+    password2 = forms.CharField(label='Повторите пароль', widget=forms.PasswordInput(attrs={'class': 'form__input'}))
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password1', 'password2')

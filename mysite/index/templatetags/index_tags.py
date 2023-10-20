@@ -28,7 +28,8 @@ def show_menu():
         {'title': 'О компании', 'url_name': 'about'},
         {'title': 'Добавление поста', 'url_name': 'addpost'},
         {'title': 'Контакты', 'url_name': 'contact'},
-        {'title': 'Login', 'url_name': 'login'}
+        {'title': 'Login', 'url_name': 'login'},
+        {'title': 'Регистрация', 'url_name': 'register'}
     ]
     return {'menu':menu}
 
